@@ -1,0 +1,102 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination_link {
+  padding: 0 10px 0 10px;
+}
+
+.more {
+  position: absolute;
+  left: 5px;
+  top: 50px;
+  background-color: black;
+  border-radius: 6px;
+  padding: 3px;
+}
+
+.buy {
+  position: absolute;
+  right: 8px;
+  background-color: black;
+  border-radius: 6px;
+}
+
+.popup-container {
+  position: absolute;
+  transform: translateX(-100vw);
+  z-index: 2;
+  background-color: black;
+  width: 100%;
+  box-sizing: border-box;
+  transition: 1s;
+}
+
+.read {
+  position: absolute;
+  left: 5px;
+  background-color: black;
+  border-radius: 6px;
+  padding: 3px;
+  ;
+}
+
+.text {
+  display: flex;
+  color: white;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 30px;
+  padding: 40px;
+  height: 100%;
+}
+
+.close {
+  position: absolute;
+  right: 5px;
+}
+
+address {
+  background-color: black;
+  max-height: 5.5ch;
+  overflow: auto;
+  line-height: 24px;
+}
+
+#addBtn {
+  vertical-align: bottom;
+  transition: 0.2s;
+  align-self: center;
+}
+
+#addBtn:hover {
+  background-color: rgb(203, 216, 216);
+}
+
+.item-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.image-block {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 10px 10px 10px;
+  flex: 0 1 15%;
+  border: 2px solid #ab2424b3;
+  padding: 10px;
+  background-color: #520909;
+  color: white;
+
+  img {
+    align-self: center;
+  }
+}
+
+.form {
+  margin: 0 0 20px 0;
+}

@@ -1,0 +1,55 @@
+.more {
+  position: absolute;
+}
+
+.more:hover,
+.read:hover,
+.buy:hover {
+  background-color: rgb(32, 31, 30);
+  cursor: pointer;
+}
+
+.remove-btn {
+  align-self: center;
+}
+
+.none {
+  display: none;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.image-block {
+  position: relative;
+  background-color: #520909;
+  color: white;
+}
+
+#popup-container {
+  position: absolute;
+  transform: translateX(-100vw);
+  z-index: 2;
+  background-color: black;
+  width: 100%;
+  box-sizing: border-box;
+  transition: 1s;
+}
+
+#text {
+  display: flex;
+  color: white;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 30px;
+  padding: 40px;
+  height: 100%;
+}
+
+#close {
+  position: absolute;
+  right: 5px;
+}

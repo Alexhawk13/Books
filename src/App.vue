@@ -1,0 +1,51 @@
+<template>
+  <div id="app">
+    <div id="nav">
+      <router-link to="/">Home</router-link>|
+      <router-link to="/MyBookShelf">BookShelf</router-link>
+    </div>
+    <!-- <Main></Main> -->
+
+    <router-view />
+  </div>
+</template>
+
+<script>
+// import Main from "./components/Main.vue";
+
+export default {
+  name: "App",
+  components: {
+    // Main
+  }
+};
+</script>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("https://goodereader.com/blog/uploads/images/https-_specials-images.forbesimg.com_dam_imageserve_794015686_960x0.jpg-fitscale.jpg");
+  background-size: 100vw 100vh;
+}
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
+</style>
