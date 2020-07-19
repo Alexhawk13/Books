@@ -1,10 +1,44 @@
+.quote {
+  font-size: 20px;
+  font-weight: 700;
+  padding: 8px;
+  color: white;
+  background-color: rgba(0, 0, 0, .3);
+}
+
 .pagination {
   display: flex;
   justify-content: center;
+  align-items: center;
+  font-weight: 700;
 }
 
 .pagination_link {
-  padding: 0 10px 0 10px;
+  padding: 0 7px 0 7px;
+  margin: 8px;
+  background-color: rgb(216, 211, 211);
+  border-radius: 5px;
+}
+
+.pagination_link:active {
+  outline: none;
+}
+
+.active {
+  background-color: white;
+}
+
+.more:hover,
+.read:hover,
+.buy:hover {
+  background-color: rgb(32, 31, 30);
+  cursor: pointer;
+}
+
+.title {
+  height: 70px;
+  overflow: hidden;
+  text-overflow: hidden;
 }
 
 .more {
@@ -99,4 +133,13 @@ address {
 
 .form {
   margin: 0 0 20px 0;
+}
+
+
+.remove-btn {
+  align-self: center;
+}
+
+.none {
+  display: none;
 }
