@@ -1,4 +1,3 @@
-<script>
 export default {
   showInfo(product) {
     let text = document.getElementsByClassName("text")[0];
@@ -11,14 +10,14 @@ export default {
     let container = document.getElementsByClassName("popup-container")[0];
     container.style.transform = `translateX(${pageXOffset}px)`;
     container.style.transform = `translateY(${pageYOffset}px)`;
+    container.style.opacity = 1;
   },
   close() {
     let container = document.getElementsByClassName("popup-container")[0];
     container.style.transform = "translateX(-100vw)";
-    console.log(this.products.length);
+    container.style.opacity = 0;
   },
   read(product) {
     return product.accessInfo.webReaderLink;
   }
-};
-</script>
+}

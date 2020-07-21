@@ -12,19 +12,8 @@
       class="quote"
       v-if="`${!products}`"
     >“Think before you speak. Read before you think.” – Fran Lebowitz</p>
-    <paginate
-      v-if="this.products.length > 9"
-      v-model="page"
-      :page-count="10"
-      :prev-text="'Prev'"
-      :next-text="'Next'"
-      :click-handler="changePages"
-      no-li-surround
-      :container-class="'pagination'"
-      :page-link-class="'pagination_link'"
-      :active-class="'active'"
-    ></paginate>
-    <section class="item-container">
+
+    <section class="item-container" v-if="products">
       <div class="image-block" v-for="product in products" :key="product.title">
         <a class="more" @click="showInfo(product)">
           <img src="../img/icons/description.svg" height="20px" alt />
@@ -55,11 +44,24 @@
         </a>
       </div>
     </section>
+    <p v-else>Sorry there is no such book</p>
+    <paginate
+      v-if="this.products.length > 9"
+      v-model="page"
+      :page-count="10"
+      :prev-text="'Prev'"
+      :next-text="'Next'"
+      :click-handler="changePages"
+      no-li-surround
+      :container-class="'pagination'"
+      :page-link-class="'pagination_link'"
+      :active-class="'active'"
+    ></paginate>
   </div>
 </template>
 
 <script>
-import Methods from "../components/Methods";
+import Methods from "../components/Methods.js";
 
 export default {
   data: () => ({
@@ -79,7 +81,6 @@ export default {
   },
   methods: {
     search() {
-      // &maxResults=10
       this.products = [];
       fetch(
         `https://www.googleapis.com/books/v1/volumes?q=${this.newBook}+title&startIndex=${this.pages}`
@@ -95,15 +96,8 @@ export default {
       if (!this.books.includes(id)) {
         this.books.push(id);
         this.saveBooks();
-      } else {
-        console.error("Sorry You already have this book in your BookShelf");
-        document.getElementById("addBtn").disabled = true;
       }
     },
-    // removeBook(x) {
-    //   this.books.splice(x, 1);
-    //   this.saveBooks();
-    // },
     saveBooks() {
       const parsedBook = JSON.stringify(this.books);
 

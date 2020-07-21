@@ -11,6 +11,7 @@
   justify-content: center;
   align-items: center;
   font-weight: 700;
+  background-color: rgba(0, 0, 0, 0.366);
 }
 
 .pagination_link {
@@ -65,6 +66,7 @@
   width: 100%;
   box-sizing: border-box;
   transition: 1s;
+  opacity: 0;
 }
 
 .read {
@@ -102,16 +104,21 @@ address {
   vertical-align: bottom;
   transition: 0.2s;
   align-self: center;
-}
+  background-color: #94deb9;
+  border: none;
+  transition: 1s;
 
-#addBtn:hover {
-  background-color: rgb(203, 216, 216);
+  &:hover {
+    cursor: pointer;
+    border-radius: 10px;
+    transition: .2s;
+  }
 }
 
 .item-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .image-block {
@@ -138,6 +145,15 @@ address {
 
 .remove-btn {
   align-self: center;
+  background-color: #d86745;
+  border: none;
+  transition: .2s;
+
+
+  &:hover {
+    color: white;
+    cursor: pointer;
+  }
 }
 
 .none {

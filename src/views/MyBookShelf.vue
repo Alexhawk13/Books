@@ -7,18 +7,7 @@
         <button class="close" @click="close">x</button>
         <p class="text"></p>
       </div>
-      <paginate
-        v-if="this.products.length > 9 || this.page!==1"
-        v-model="page"
-        :page-count="10"
-        :prev-text="'Prev'"
-        :next-text="'Next'"
-        :click-handler="changePages"
-        no-li-surround
-        :container-class="'pagination'"
-        :page-link-class="'pagination_link'"
-        :active-class="'active'"
-      ></paginate>
+
       <section class="item-container">
         <div
           class="image-block"
@@ -53,12 +42,24 @@
           </a>
         </div>
       </section>
+      <paginate
+        v-if="this.products.length > 9 || this.page!==1"
+        v-model="page"
+        :page-count="10"
+        :prev-text="'Prev'"
+        :next-text="'Next'"
+        :click-handler="changePages"
+        no-li-surround
+        :container-class="'pagination'"
+        :page-link-class="'pagination_link'"
+        :active-class="'active'"
+      ></paginate>
     </div>
   </div>
 </template>
 
 <script>
-import Methods from "../components/Methods.vue";
+import Methods from "../components/Methods.js";
 
 export default {
   data: () => ({
