@@ -6,6 +6,18 @@
   background-color: rgba(0, 0, 0, .3);
 }
 
+.search {
+  cursor: pointer;
+  padding: 5px;
+  background-color: #e0d8db00;
+  font-size: 14px;
+}
+
+.search-form button {
+  padding: 5px;
+  margin-left: 3px;
+}
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -29,20 +41,22 @@
   background-color: white;
 }
 
-.more:hover,
+.show-info:hover,
 .read:hover,
-.buy:hover {
+.book__buy:hover {
+  // transform: scale(1.1);
+  // transition: 2s;
   background-color: rgb(32, 31, 30);
   cursor: pointer;
 }
 
-.title {
-  height: 70px;
-  overflow: hidden;
-  text-overflow: hidden;
+.book__title {
+  height: 58px;
+  overflow: auto;
+  font-family: 'Gentium Book Basic', serif;
 }
 
-.more {
+.show-info {
   position: absolute;
   left: 5px;
   top: 50px;
@@ -51,14 +65,19 @@
   padding: 3px;
 }
 
-.buy {
+.book__buy {
+  padding: 4px;
   position: absolute;
   right: 8px;
   background-color: black;
   border-radius: 6px;
 }
 
-.popup-container {
+.shop-cart {
+  height: 20px;
+}
+
+.description {
   position: absolute;
   transform: translateX(-100vw);
   z-index: 2;
@@ -78,7 +97,7 @@
   ;
 }
 
-.text {
+.description__text {
   display: flex;
   color: white;
   font-size: 18px;
@@ -88,70 +107,75 @@
   height: 100%;
 }
 
-.close {
+.description__close {
   position: absolute;
   right: 5px;
 }
 
-address {
+author {
   background-color: black;
   max-height: 5.5ch;
   overflow: auto;
   line-height: 24px;
 }
 
-#addBtn {
-  vertical-align: bottom;
-  transition: 0.2s;
+#addToShelf {
   align-self: center;
-  background-color: #94deb9;
+  background-color: #e8074c;
   border: none;
   transition: 1s;
 
   &:hover {
     cursor: pointer;
-    border-radius: 10px;
-    transition: .2s;
   }
 }
 
-.item-container {
+.books-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  @media (max-width: 515px) {
+    justify-content: center;
+  }
 }
 
-.image-block {
+.book {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: 0 10px 10px 10px;
-  flex: 0 1 15%;
+  flex: 0 0 15%;
   border: 2px solid #ab2424b3;
   padding: 10px;
   background-color: #520909;
   color: white;
+  @media (max-width: 980px) {
+   flex: 0 0 20%; 
+  }
 
   img {
     align-self: center;
   }
 }
 
-.form {
+
+.search-form {
   margin: 0 0 20px 0;
 }
 
 
 .remove-btn {
   align-self: center;
-  background-color: #d86745;
+  background-color: #000;
+  color: #fff;
   border: none;
-  transition: .2s;
-
-
-  &:hover {
-    color: white;
+  transition: 2s;
+  position: relative;
+  width: 70px;
+  height: 20px;
+  &:hover span {
+    color: red;
     cursor: pointer;
   }
 }

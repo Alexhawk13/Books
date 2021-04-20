@@ -1,11 +1,11 @@
 <template>
   <div class="container">
-    <div class="popup-container">
-      <button class="close" @click="close">x</button>
-      <p class="text"></p>
+    <div class="description">
+      <button class="description__close" @click="close">x</button>
+      <p class="description__text"></p>
     </div>
-    <form class="form" v-on:submit.prevent="search()" @click="returnFirst()">
-      <input type="text" v-model="newBook" placeholder="Search for a book" />
+    <form class="search-form" v-on:submit.prevent="search()" @click="goFirstPage()">
+      <input class="search" type="text" v-model="newBook" placeholder="Search for a book" />
       <button>Search</button>
     </form>
     <p
@@ -13,9 +13,9 @@
       v-if="`${!products}`"
     >“Think before you speak. Read before you think.” – Fran Lebowitz</p>
 
-    <section class="item-container" v-if="products">
-      <div class="image-block" v-for="product in products" :key="product.title">
-        <a class="more" @click="showInfo(product)">
+    <section class="books-container" v-if="products">
+      <div class="book" v-for="product in products" :key="product.title">
+        <a class="show-info" @click="showInfo(product)">
           <img src="../img/icons/description.svg" height="20px" alt />
         </a>
 
@@ -24,6 +24,7 @@
         </a>
 
         <img
+          class="book__image"
           :src="
             product.volumeInfo.imageLinks
               ? product.volumeInfo.imageLinks.thumbnail
@@ -31,22 +32,21 @@
           "
           alt
         />
-        <p class="title">{{ product.volumeInfo.title }}</p>
-        <address>{{ product.volumeInfo.authors ? product.volumeInfo.authors.join() : '' }}</address>
-        <button id="addBtn" @click="addBook(product.id)">Add</button>
-        <a class="buy" :href="product.saleInfo.buyLink" target="_blank">
-          <img
+        <p class="book__title">{{ product.volumeInfo.title }}</p>
+        <p>{{ product.volumeInfo.authors ? product.volumeInfo.authors.join() : '' }}</p>
+        <button id="addToShelf" @click="addBook(product.id)">Add</button>
+        <a v-if="product.saleInfo.buyLink" :class="{book__buy : product.saleInfo.buyLink}" :href="product.saleInfo.buyLink" target="_blank">
+          <img class="shop-cart"
             :src="product.saleInfo.buyLink 
               ? cart 
               :  ''"
-            height="20px"
           />
         </a>
       </div>
     </section>
     <p v-else>Sorry there is no such book</p>
     <paginate
-      v-if="this.products.length > 9"
+      v-if="this.products.length"
       v-model="page"
       :page-count="10"
       :prev-text="'Prev'"
@@ -72,18 +72,30 @@ export default {
     products: [],
     newBook: null,
     books: [],
-    replaceImg: require("../img/book.png")
+    replaceImg: require("../img/book.png"),
+    maxResults: 10,
   }),
   created() {
     (this.showInfo = Methods.showInfo),
-      (this.close = Methods.close),
-      (this.read = Methods.read);
+    (this.close = Methods.close),
+    (this.read = Methods.read);
   },
   methods: {
     search() {
       this.products = [];
+      // mobile adaptive
+      this.maxResults = 10;
+      if(window.innerWidth <= 515) {
+        this.maxResults = 10
+      }
+        else if(window.innerWidth <= 880) {
+        this.maxResults = 9;
+      } else if (window.innerWidth <= 980) {
+        this.maxResults = 8
+      }
+      // end mobile adaptive
       fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=${this.newBook}+title&startIndex=${this.pages}`
+        `https://www.googleapis.com/books/v1/volumes?q=${this.newBook}+intitle&startIndex=${this.pages}&maxResults=${this.maxResults}`
       )
         .then(response => response.json())
         .then(result =>
@@ -100,14 +112,13 @@ export default {
     },
     saveBooks() {
       const parsedBook = JSON.stringify(this.books);
-
       localStorage.setItem("books", parsedBook);
     },
     changePages(pageNumber) {
       this.pages = pageNumber * 10;
       this.search();
     },
-    returnFirst() {
+    goFirstPage() {
       this.page = 1;
     }
   },
