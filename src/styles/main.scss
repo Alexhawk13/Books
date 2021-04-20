@@ -134,6 +134,9 @@ author {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  @media (max-width: 880px) {
+    justify-content: space-evenly;
+  }
   @media (max-width: 515px) {
     justify-content: center;
   }
