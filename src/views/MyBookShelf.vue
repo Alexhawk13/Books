@@ -106,3 +106,12 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+  .books-container {
+   @media (min-width: 980px) {
+     justify-content: start;
+     margin-left: 5%;
+   }
+  }
+</style>
